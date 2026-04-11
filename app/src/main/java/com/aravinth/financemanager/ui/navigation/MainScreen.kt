@@ -1,0 +1,37 @@
+package com.aravinth.financemanager.ui.navigation
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
+import androidx.navigation.NavHost
+import androidx.navigation.compose.rememberNavController
+import com.aravinth.financemanager.ui.screen.AccountingScreen
+import com.aravinth.financemanager.ui.screen.AssetsScreen
+import com.aravinth.financemanager.ui.screen.BudgetingScreen
+import com.aravinth.financemanager.ui.screen.HomeScreen
+
+
+@Composable
+fun MainScreen(){
+    val navController = rememberNavController()
+    Scaffold(bottomBar = {
+        Box(modifier = Modifier.navigationBarsPadding()
+         { BottomNavigationBar(navController) }
+        )
+    })
+    { innerPadding ->
+        NavHost(navController = navController,
+            startDestination = Screen.Home,
+            modifier = Modifier.fillMaxSize()) {
+            Composable<Screen.Home> { HomeScreen(navController) }
+            Composable<Screen.Assets> { AssetsScreen(navController) }
+            Composable<Screen.Accounting> { AccountingScreen(navController) }
+            Composable<Screen.Budgeting> { BudgetingScreen(navController) }
+        }
+    }
+}
