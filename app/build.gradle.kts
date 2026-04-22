@@ -8,9 +8,13 @@ plugins {
 
 android {
     namespace = "com.aravinth.financemanager"
-    compileSdk {
+        compileSdk {
         version = release(36) {
             minorApiLevel = 1
+        }
+        compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
         }
     }
 
@@ -57,6 +61,9 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.compose.ui.test)
     implementation(libs.hilt.android)
+    implementation( libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
     ksp(libs.hilt.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
