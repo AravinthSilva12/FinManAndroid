@@ -5,7 +5,7 @@ import com.aravinth.financemanager.data.local.AccountingEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class AccountingRepository @Inject constructor(
+class RoomAccountingRepository @Inject constructor(
     private val dao: AccountingDao
 ) {
    suspend fun addTransaction(item: AccountingEntity) {

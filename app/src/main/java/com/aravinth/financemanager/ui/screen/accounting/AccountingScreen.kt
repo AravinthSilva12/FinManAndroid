@@ -1,4 +1,4 @@
-package com.aravinth.financemanager.ui.screen.Assets
+package com.aravinth.financemanager.ui.screen.accounting
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,22 +11,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.aravinth.financemanager.viewmodel.AccountingViewModel
 
 @Composable
-fun AssetsScreen(navController: NavController) {
+fun AccountingScreen (navController: NavController) {
 
-    Scaffold(modifier = Modifier.fillMaxSize())
-    { innerPadding ->
-        Box(
-            modifier = Modifier.padding(innerPadding)
-            .fillMaxSize(), contentAlignment = Alignment.Center
-        )
+    val viewModel: AccountingViewModel = hiltViewModel()
+    Scaffold(modifier = Modifier.fillMaxSize().padding())
+    {innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding).fillMaxSize(),
+            contentAlignment = Alignment.Center)
         {
-            Text(text = "Assets Screen",
+            Text(
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                text =  "Accounting Screen"
             )
         }
     }

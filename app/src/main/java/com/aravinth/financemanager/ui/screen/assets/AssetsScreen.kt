@@ -1,4 +1,4 @@
-package com.aravinth.financemanager.ui.screen.Accounting
+package com.aravinth.financemanager.ui.screen.assets
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,17 +14,19 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun AccountingScreen(navController: NavController) {
-    Scaffold(modifier = Modifier.fillMaxSize().padding())
-    {innerPadding ->
-        Box(modifier = Modifier.padding(innerPadding).fillMaxSize(),
-            contentAlignment = Alignment.Center)
+fun AssetsScreen(navController: NavController) {
+
+    Scaffold(modifier = Modifier.fillMaxSize())
+    { innerPadding ->
+        Box(
+            modifier = Modifier.padding(innerPadding)
+            .fillMaxSize(), contentAlignment = Alignment.Center
+        )
         {
-            Text(
+            Text(text = "Assets Screen",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
-                text =  "Accounting Screen"
+                textAlign = TextAlign.Center
             )
         }
     }
