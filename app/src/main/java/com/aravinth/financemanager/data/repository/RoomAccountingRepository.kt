@@ -1,5 +1,6 @@
 package com.aravinth.financemanager.data.repository
 
+import android.R.attr.category
 import com.aravinth.financemanager.data.local.AccountingDao
 import com.aravinth.financemanager.data.local.AccountingEntity
 import kotlinx.coroutines.flow.Flow
@@ -18,6 +19,10 @@ class RoomAccountingRepository @Inject constructor(
 
     fun viewByType(type: String): Flow<List<AccountingEntity>> {
         return dao.viewByType(type)
+    }
+
+    fun viewByCategory(): Flow<List<AccountingEntity>> {
+        return dao.viewByCategory(category)
     }
 
     suspend fun deleteTransaction(item: AccountingEntity) {

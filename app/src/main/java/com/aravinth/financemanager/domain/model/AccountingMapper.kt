@@ -1,0 +1,23 @@
+package com.aravinth.financemanager.domain.model
+
+import com.aravinth.financemanager.data.local.AccountingEntity
+
+    fun AccountingEntity.toDomain(): Accounting {
+        return Accounting(
+         id = this.id,
+         amount = this.amount,
+         category = TransactionCategory.valueOf(this.category),
+         type = TransactionType.valueOf(this.type),
+         timestamp = this.timestamp
+        )
+    }
+
+    fun Accounting.toEntity(): AccountingEntity {
+        return AccountingEntity(
+          id = this.id,
+          amount = this.amount,
+          category = this.category.name,
+          type = this.type.name,
+          timestamp = this.timestamp
+        )
+    }
