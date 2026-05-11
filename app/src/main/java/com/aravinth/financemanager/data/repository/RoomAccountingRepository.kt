@@ -1,33 +1,42 @@
 package com.aravinth.financemanager.data.repository
 
-import android.R.attr.category
 import com.aravinth.financemanager.data.local.AccountingDao
 import com.aravinth.financemanager.data.local.AccountingEntity
 import com.aravinth.financemanager.domain.model.Accounting
 import com.aravinth.financemanager.domain.model.TransactionCategory
+import com.aravinth.financemanager.domain.model.TransactionType
+import com.aravinth.financemanager.domain.model.toDomain
+import com.aravinth.financemanager.domain.model.toEntity
+import com.aravinth.financemanager.domain.repository.AccountingRepo
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import java.util.Collections.list
 import javax.inject.Inject
+import kotlin.collections.map
 
 class RoomAccountingRepository @Inject constructor(
     private val dao: AccountingDao
-) {
-   suspend fun addTransaction(item: AccountingEntity) {
-        dao.addTransaction(item)
+) : AccountingRepo {
+    override suspend fun addTransaction(item: Accounting) {
+        dao.addTransaction(item.toEntity())
     }
 
-    fun viewTransactions(): Flow<List<AccountingEntity>> {
-        return dao.viewTransactions()
+    override fun viewAll(): Flow<List<Accounting>> {
+        return dao.viewTransactions().map{list -> list.map{it.toDomain()}}
     }
 
-    fun viewByType(type: String): Flow<List<AccountingEntity>> {
-        return dao.viewByType(type)
+    override fun viewByType(type: TransactionType): Flow<List<Accounting>> {
+        return dao.viewByType(type.name).map { list -> list.map{it.toDomain()} }
     }
 
-    fun viewByCategory(category: String): Flow<List<AccountingEntity>> {
-        return dao.viewByCategory(category)
+    override fun viewByCategory(category: TransactionCategory): Flow<List<Accounting>> {
+        return dao.viewByCategory(category.name).map{list-> list.map {it.toDomain()}}
     }
 
-    suspend fun deleteTransaction(item: AccountingEntity) {
-        dao.deleteTransaction(item)
+    override suspend fun deleteTransaction(item: Accounting) {
+        dao.deleteTransaction(item.toEntity())
     }
+
+
+
 }

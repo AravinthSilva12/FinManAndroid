@@ -11,9 +11,11 @@ import com.aravinth.financemanager.domain.model.TransactionType
 import com.aravinth.financemanager.domain.usecase.AddTransactionUseCase
 import com.aravinth.financemanager.domain.usecase.DeleteTransactionUseCase
 import com.aravinth.financemanager.domain.usecase.GetTransactionsUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class AccountingViewModel @Inject constructor(
     private val addTransactionUseCase: AddTransactionUseCase,
     private val getTransactionsUseCase: GetTransactionsUseCase,
