@@ -36,7 +36,4 @@ class RoomAccountingRepository @Inject constructor(
     override suspend fun deleteTransaction(item: Accounting) {
         dao.deleteTransaction(item.toEntity())
     }
-
-
-
 }
