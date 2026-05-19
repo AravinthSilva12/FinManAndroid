@@ -12,7 +12,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.aravinth.financemanager.ui.screen.accounting.AccountingScreen
 import com.aravinth.financemanager.ui.screen.accounting.AddTransaction
-import com.aravinth.financemanager.ui.screen.accounting.ViewTransactions
+import com.aravinth.financemanager.ui.screen.accounting.FinancialReportScreen
+import com.aravinth.financemanager.ui.screen.accounting.JournalScreen
+import com.aravinth.financemanager.ui.screen.accounting.LedgerScreen
 import com.aravinth.financemanager.ui.screen.assets.AssetsScreen
 import com.aravinth.financemanager.ui.screen.budgeting.BudgetingScreen
 import com.aravinth.financemanager.ui.screen.home.HomeScreen
@@ -36,7 +38,9 @@ fun MainScreen(){
             composable<Screen.Accounting> { AccountingScreen(navController) }
             composable<Screen.Budgeting> { BudgetingScreen(navController) }
             composable<Screen.AddTransaction> { AddTransaction(navController) }
-            composable<Screen.ViewTransactions> { ViewTransactions(navController) }
+            composable<Screen.Journal> { JournalScreen(navController) }
+            composable<Screen.Ledger> { LedgerScreen(navController) }
+            composable<Screen.FinancialReport> { FinancialReportScreen(navController) }
         }
     }
 }

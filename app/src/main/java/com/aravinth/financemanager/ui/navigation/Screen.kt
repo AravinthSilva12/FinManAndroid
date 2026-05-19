@@ -17,8 +17,13 @@ import kotlinx.serialization.Serializable
     data object AddTransaction
 
     @Serializable
-    data object ViewTransactions
+    data object Journal
 
+    @Serializable
+    data object Ledger
+
+    @Serializable
+    data object FinancialReport
     @Serializable
     data object Budgeting
 
